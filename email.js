@@ -16,7 +16,7 @@ var client = nodemailer.createTransport(sgTransport(options));
 var server = new Hapi.Server();
 server.connection({
     host: 'localhost',
-    port: 8000
+    port: process.env.PORT || 5000
 });
 
 // Add the route
