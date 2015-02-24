@@ -24,7 +24,6 @@ server.route({
     method: 'GET',
     path:'/{email}',
     handler: function (request, reply) {
-
       var email = {
         from: 'Control Gimnasio <info@control-gimnasio.com>',
         to: request.params.email,
@@ -34,14 +33,12 @@ server.route({
 
       client.sendMail(email, function(err, info){
           if (err){
-            console.log(error);
+            reply(err);
           }
           else {
-            reply('Hello ' + encodeURIComponent(request.params.email) + '!');
-            console.log(info);
+            reply(info);
           }
       });
-
     }
 });
 
